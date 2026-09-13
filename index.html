@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil Studio — Messages d’accueil Instagram & Facebook</title>
+  <meta name="description" content="Studio pour composer des messages d’accueil officiels Instagram et Facebook. Conforme aux règles Meta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="top">
+    <div class="brand">
+      <span class="mark">✦</span>
+      <div>
+        <strong>Accueil Studio</strong>
+        <em>Instagram · Facebook · Meta officiel</em>
+      </div>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-view="studio">Studio</button>
+      <button class="nav-btn" data-view="guide">Guide officiel</button>
+      <button class="nav-btn" data-view="regles">Règles</button>
+    </nav>
+  </header>
+  <main>
+    <section id="view-studio" class="view active">
+      <div class="hero">
+        <p class="eyebrow">Vibe coded · Finca La Fé</p>
+        <h1>Des premiers messages<br /><em>qui ont l’air écrits à la main.</em></h1>
+        <p class="lede">Compose, prévisualise et copie tes messages d’accueil. L’envoi réel se fait via Meta Business Suite ou l’API officielle — jamais via un bot non autorisé.</p>
+      </div>
+      <div class="layout">
+        <aside class="panel">
+          <label>Plateforme</label>
+          <div class="seg">
+            <button class="seg-btn active" data-platform="instagram">Instagram</button>
+            <button class="seg-btn" data-platform="facebook">Facebook</button>
+          </div>
+          <label>Déclencheur officiel</label>
+          <select id="trigger">
+            <option value="instant">Réponse instantanée (1er DM reçu)</option>
+            <option value="welcome">Message d’accueil natif (chat ouvert)</option>
+            <option value="away">Message d’absence</option>
+            <option value="keyword">Mot-clé dans un DM</option>
+            <option value="comment">Commentaire → message privé</option>
+            <option value="ice">Ice breakers (suggestions)</option>
+          </select>
+          <label>Ton</label>
+          <select id="tone">
+            <option value="chaleureux">Chaleureux · domaine</option>
+            <option value="premium">Premium · sobre</option>
+            <option value="direct">Direct · utile</option>
+            <option value="es">Español · cálido</option>
+          </select>
+          <label>Nom de la marque</label>
+          <input id="brand" type="text" value="Finca La Fé" maxlength="40" />
+          <label>Message</label>
+          <textarea id="message" rows="8" maxlength="900"></textarea>
+          <div class="meta-row">
+            <span id="count">0 / 900</span>
+            <button type="button" class="ghost" id="generate">Générer une version</button>
+          </div>
+          <label>Ice breakers (3 max recommandés)</label>
+          <input id="ice1" type="text" placeholder="Horaires & visite" maxlength="20" />
+          <input id="ice2" type="text" placeholder="Produits" maxlength="20" />
+          <input id="ice3" type="text" placeholder="Parler à quelqu’un" maxlength="20" />
+          <div class="actions">
+            <button class="primary" id="copy">Copier le message</button>
+            <button class="ghost" id="save">Sauver le modèle</button>
+          </div>
+          <p class="hint" id="status"></p>
+        </aside>
+        <div class="preview-wrap">
+          <div class="phone" id="phone">
+            <div class="notch"></div>
+            <div class="ig-top">
+              <div class="avatar">FL</div>
+              <div>
+                <strong id="preview-brand">Finca La Fé</strong>
+                <small id="preview-sub">Compte professionnel · Instagram</small>
+              </div>
+            </div>
+            <div class="thread" id="thread"></div>
+            <div class="composer-bar">Message…</div>
+          </div>
+          <p class="caption">Aperçu — le message n’est pas envoyé depuis cette page.</p>
+        </div>
+      </div>
+      <section class="saved">
+        <h2>Modèles enregistrés</h2>
+        <div id="templates" class="cards"></div>
+      </section>
+    </section>
+    <section id="view-guide" class="view">
+      <div class="hero tight">
+        <p class="eyebrow">Méthode officielle</p>
+        <h1>Activer l’accueil<br /><em>sans risquer le ban.</em></h1>
+      </div>
+      <ol class="steps">
+        <li><h3>Compte professionnel</h3><p>Instagram Business ou Creator, lié à une Page Facebook. Sans ça, ni Business Suite ni Messaging API.</p></li>
+        <li><h3>Meta Business Suite</h3><p>Va sur <a href="https://business.facebook.com" target="_blank" rel="noopener">business.facebook.com</a> → Inbox → Automations.</p></li>
+        <li><h3>Réponse instantanée</h3><p>Active Instant Reply, coche Instagram (et Messenger). Colle le texte composé ici.</p></li>
+        <li><h3>Message d’accueil natif</h3><p>Sur certains comptes : Instagram → Réglages → Compte professionnel → Message d’accueil.</p></li>
+        <li><h3>Commentaire → DM</h3><p>Dans Automations, « Comment to message » : un mot-clé sur un post déclenche un message privé.</p></li>
+        <li><h3>App développeur (avancé)</h3><p>API officielle uniquement : app Meta, revue, webhooks, permission instagram_manage_messages, divulgation bot, chemin vers un humain. Pas de DM à froid aux nouveaux abonnés via l’API publique.</p></li>
+      </ol>
+    </section>
+    <section id="view-regles" class="view">
+      <div class="hero tight">
+        <p class="eyebrow">À savoir</p>
+        <h1>Ce qui est permis,<br /><em>ce qui fait tomber le compte.</em></h1>
+      </div>
+      <div class="grid2">
+        <article class="ok">
+          <h3>Autorisé</h3>
+          <ul>
+            <li>Réponse au premier message reçu</li>
+            <li>Message d’accueil quand la personne ouvre le fil</li>
+            <li>Réponses par mot-clé à un DM déjà ouvert</li>
+            <li>Réponse privée à un commentaire</li>
+            <li>Ice breakers et menu persistant</li>
+            <li>Outils partenaires officiels Meta</li>
+          </ul>
+        </article>
+        <article class="no">
+          <h3>Interdit / risqué</h3>
+          <ul>
+            <li>DM de masse aux nouveaux followers (sauf beta fermée Meta)</li>
+            <li>Login + mot de passe dans un script</li>
+            <li>Messages promo hors fenêtre 24 h</li>
+            <li>Cacher que c’est un message automatique</li>
+            <li>Pas de passage vers un humain</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note">Cette app compose et documente. Elle n’envoie aucun message et ne stocke aucun token Meta.</p>
+    </section>
+  </main>
+  <footer>
+    <p>Accueil Studio · usage conforme aux conditions Meta · 2026</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
